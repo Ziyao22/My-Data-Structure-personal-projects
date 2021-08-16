@@ -1,17 +1,22 @@
-#Ziyao Gao zg8rw 11/14/2020
-#File name: Makefile
+# Makefile for CS 2150 pre-lab 8
+# This Makefile shows how to link assembly with C/C++
 
-CXX=g++ $(CXXFLAGS)
-CXXFLAGS=-Wall -O2
-DEBUG=-g
-OBJECTS=middleearth.o topological.o
-topological: $(OBJECTS)
-	$(CXX) $(DEBUG) $(OBJECTS)
+# Defines the C++ compiler we'll be using
+CXX = clang++
+
+# Defines the flags we'll be passing to the C++ compiler
+CXXFLAGS = -Wall -g -O2
+
+# All of the .o files for our program
+OBJECTS = puzzle.o solvePuzzle.o
+# Compile our files into a.out                                             
+a.out: $(OBJECTS)
+	$(CXX) $(CXXFLAGS) $(OBJECTS)
 	doxygen
-.PHONY: clean
-clean:
-	-rm -f *.o *~ a.out
-middleearth.o:middleearth.cpp middleearth.h
-#heap.o:heap.cpp heap.h
-topological.o:topological.cpp 
 
+# This will clean up (remove) all our object files.  The -f option
+# tells rm to forcily remove the files (i.e. don't ask if they should
+# be removed or not).  This removes object files (*.o) and Emacs
+# backup files (*~)
+clean:
+	-rm -f *.o *~
