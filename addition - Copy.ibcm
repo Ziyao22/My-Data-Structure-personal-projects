@@ -1,0 +1,29 @@
+C009     000                   jmp     start   skip around the variables
+0000     001          a        dw      0        int a
+0000     002          b        dw      0        int b
+0000     003          c        dw      0        int c
+0000     004          sum      dw      0        int sum
+0000     005          zero     dw      0        zero
+0001     006          one      dw      1         one   
+0000     007                                    leave space for changes
+0000     008
+1000     009          start    readH           read input a
+4001     00A                   store     a      store a to accumulator
+1000     00B                   readH           read input b
+4002     00C                   store     b      store b to accumulator
+1000     00D                   readH           read input c 
+4003     00E                   store     c      store c to accumulator
+3004     00F                   load      sum  load accumulator equals sum
+5001     010                   add       a       sum+=a
+5002     011                   add       b       sum+=b
+5003     012                   add       c       sum+=c
+1800     013                   printH            print out the sum
+D016     014                   jmpe             if sum is euqal to 0,end
+C009     015                   jmp       start   start the program again
+3001     016                   load      a       load accumulator from a
+1800     017                   pirntH             print out a
+3002     018                   load      b       load accumulator from b
+1800     019                   printH             print out b
+3003     01A                   load       c       load accumulator from c
+1800     01B                    printH             print out c
+0000     01C                    halt               exit the program

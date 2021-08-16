@@ -1,0 +1,52 @@
+C023 000          jmp       start     skip around variables
+000A 001   n      dw        10         the size of the array
+0009 002   a      dw        0         int a[]
+0000 003   iterate  dw      0         int iterate
+0000 004   j      dw        0               int element
+0000 005   zero   dw        0         zero
+0001 006   one    dw        1         one
+4000 007   sdit   dw        4000      store it
+0000 008   number dw        0          int number
+0001 009   a[0] 
+0002 00A   a[1]
+0003 00B   a[2]   dw        0         a[2]=number
+0004 00C   a[3]   dw        0         a[3]=number
+0005 00D   a[4]   dw        0         a[4]=number
+0006 00E   a[5]   dw        0         a[5]=number
+0007 00F   a[6]   dw        0         a[6]=number
+0008 010   a[7]   dw        0         a[7]=number
+0009 011   a[8]   dw        0         a[8]=number
+0010 012   a[9]   dw        0         a[9]=number
+0011 013   a[10]  dw        0         a[10]=number
+0012 014   a[11]  dw        0         a[11]=number
+0013 015   a[12]  dw        0         a[12]=number
+0014 016   a[13]  dw        0         a[13]=number
+0015 017   a[14]  dw        0         a[14]=number
+0016 018   a[15]  dw        0         a[15]=number
+0017 019   a[16]  dw        0         a[16]=number
+0018 01A   a[17]  dw        0         a[17]=number
+0019 01B   a[18]  dw        0         a[18]=number
+0020 01C   a[19]  dw        0         a[19]=number
+0021 01D   max    dw        5         max=5 
+0022 01E   
+3000 01F   ldit   dw       3000            leave space for changes
+0000 020   x      dw        0     counting the index
+0000 021
+0000 022                    
+3001 023   start   load     n           if(x>=n),goto xit
+6020 024          sub      x            n-x
+E034 025          jmpl     xit        if n>x,end the loop
+D034 026          jmpe     xit        if n=x,end the loop
+3007 027          load     ldit       instruction to load a[x]
+1008 028          readH               read input number
+4008 029          store     number     store number to accumulator
+3007 02A          load      sdit       a[iterate] 
+5002 02B          add      a[]        add a to accumulator
+5020 02C          add      x    add iterate to accumulator
+402F 02D          store    doit       plant the instruction into program
+3008 02E          load     number     load number
+0000 02F   doit   dw       0            a placeholder
+3020 030          load     x    load iterate to accumulator
+5006 031          add      1          implement iterate by 1
+4020 032          store    x    store iterate to accumulator
+C023 033          jmp      start      back to the begining of the loop

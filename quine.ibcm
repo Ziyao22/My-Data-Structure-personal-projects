@@ -1,0 +1,24 @@
+C008 000          jmp       start     skip around variables
+0018 001   n      dw        22         the size of the array
+0000 002   iterate  dw      0         int iterate
+0003 003   element  dw      0          int element
+0000 004   zero   dw        0         zero
+0001 005   one    dw        1         one
+4000 006   sdit   dw        4000      store it
+3000 007   ldit   dw        3000      load it
+3004 008         load      zero
+4003 009         store     element
+3001 00A          load     n         load n to accumulator
+6003 00B          sub      element    n-element
+E017 00C          jmpl     xit        if n>iterate,end the loop
+D017 00D          jmpe     xit        if n=iterate,end the loop
+3007 00E          load     ldit       instruction to load a[iterate]
+5003 00F          add      element      add iterate to accumulator
+4011 010          store    doit     plant the instruction into       
+300F 011   doit   dw       0              a placeholder
+1800 012          printH         output the value of this file
+3003 013          load     element      load iterate to the accumulator
+5005 014          add      1             iterate+=1
+4003 015          store    element       store iterate to accumulator
+C00A 016          jmp      start       back to the begining of the loop
+0000 017          halt                 finish     
